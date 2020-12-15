@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { UserDataContext } from './contexts/UserDataContext';
+
+import Login from './components/Login';
 
 function App() {
+
+  const [userData, setUserData] = useState({username: "", password: ""});
+  
+  const submitHandler = () => {
+
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <UserDataContext.Provider value={[userData, setUserData, submitHandler]}>
+        <Router>
+          <Switch>
+              <Route exact path='/' component={Login}/>
+          </Switch>
+        </Router>
+      </UserDataContext.Provider>
     </div>
   );
 }
