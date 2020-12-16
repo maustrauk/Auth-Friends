@@ -38,27 +38,35 @@ const Login = props => {
 
 
 
-    return (<div className="login">
-        <form onSubmit={login}>
-            <label>
-                Username:
+    return (<div className="login container-fluid w-50 mt-5 ">
+        <h1 className="display-1 mt-3 text-center"> Login Page</h1>
+        <form >
+            <div className="form-group">
+                <label htmlFor="usernameInput">Username:</label>
                 <input name="username"
+                id="usernameInput"
+                className="form-control"
                 type="text"
                 placeholder="Enter username"
                 onChange={changeHandler}
-                value={userData.username} />
-            </label>
-            <label>
-                Password:
+                value={userData.username}
+                aria-describedby="usernameError" />
+                <small id="usernameError" className="form-text text-muted">{errorMessage.message}</small>
+            </div>
+            <div className="form-group">
+                <label htmlFor="passwordInput"> Password:</label>
                 <input name="password"
+                id="passwordInput"
+                className="form-control"
                 type="text"
                 placeholder="Enter password"
                 onChange={changeHandler}
-                value={userData.password} />
-            </label>
-            {isLoading ? <div className="spinner-border"></div> : <button>login</button>}
+                value={userData.password}
+                aria-describedby="passwordError" />
+                <small id="passwordError" className="form-text text-muted">{errorMessage.message}</small>
+            </div>
+            {isLoading ? <div className="spinner-border"></div> : <button type="button" className="btn btn-primary" onClick={login}>login</button>}
         </form>
-        {errorMessage.isError ? <div className="error-message">{errorMessage.message}</div> : <div></div>}
     </div>)
 }
 

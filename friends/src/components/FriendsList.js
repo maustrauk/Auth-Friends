@@ -24,10 +24,18 @@ const FriendsList = props => {
         })
     };
 
-    return (<div className="friends-list">
-        {friends.map(friend => (
-            <Friend key={friend.id} friend={friend} />
-        ))}
+    const clickHandler = () => {
+        props.history.push('/newFriend');
+    }
+
+    return (<div className="friends-list container-fluid text-center">
+        <h1 className="display-1 mt-3"> Friends List</h1>
+        <button type="button" className="btn btn-primary" onClick={clickHandler}>Add Friend</button>
+        <div className="container-fluid row m-3 ">
+            {friends.map(friend => (
+                <Friend key={friend.id} friend={friend} />
+            ))}
+        </div>
     </div>)
 }
 

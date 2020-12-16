@@ -25,41 +25,56 @@ const NewFriendForm = props => {
         .post('/friends', newFriend)
         .then(res => {
             console.log(res);
+            props.history.push('/friendsList');
         })
         .catch(err => {
             console.log(err);
         })
+        
     }
 
-    return (<div className="new-friend-form">
-        <form onSubmit={addNewFriend}>
-            <label>
-                Enter Friend name:
+    return (<div className="add-friend container-fluid w-50 mt-5 ">
+        <h1 className="display-1 mt-3 text-center"> Add New Friend</h1>
+        <form >
+            <div className="form-group">
+                <label htmlFor="nameInput">Name:</label>
                 <input name="name"
+                id="nameInput"
+                className="form-control"
                 type="text"
-                placeholder="Friends name"
+                placeholder="Enter Name"
                 onChange={changeHandler}
-                value={newFriend.name} />
-            </label>
-            <label>
-                Enter Friend age:
+                value={newFriend.name}
+                aria-describedby="nameError" />
+                <small id="nameError" className="form-text text-muted"></small>
+            </div>
+            <div className="form-group">
+                <label htmlFor="ageInput">Age:</label>
                 <input name="age"
+                id="ageInput"
+                className="form-control"
                 type="text"
-                placeholder="Friends age"
+                placeholder="Enter Age"
                 onChange={changeHandler}
-                value={newFriend.age} />
-            </label>
-            <label>
-                Enter Friend email:
+                value={newFriend.age}
+                aria-describedby="ageError" />
+                <small id="ageError" className="form-text text-muted"></small>
+            </div>
+            <div className="form-group">
+                <label htmlFor="emailInput">Email:</label>
                 <input name="email"
+                id="emailInput"
+                className="form-control"
                 type="text"
-                placeholder="Friends email"
+                placeholder="Enter Email"
                 onChange={changeHandler}
-                value={newFriend.email} />
-            </label>
-            <button>Submit</button>
+                value={newFriend.email}
+                aria-describedby="emailError" />
+                <small id="emailError" className="form-text text-muted"></small>
+            </div>
+            <button type="button" className="btn btn-primary" onClick={addNewFriend}>Submit</button>
         </form>
-    </div>);
+    </div>)
 }
 
 export default NewFriendForm;

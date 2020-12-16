@@ -1,0 +1,16 @@
+/* Font imports */
+
+@import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
+
+
+h1 {
+  font-family: 'Langar', cursive;
+}
+
+/* Friend */
+
+.card {
+  width: 20rem;
+}
+
+
